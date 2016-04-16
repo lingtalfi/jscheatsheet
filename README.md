@@ -36,6 +36,29 @@ https://github.com/lingtalfi/jsdispatchers
 
 
 
+js plugins
+---------------
+
+```js
+window.myObject = function (options) {
+    this.d = $.extend({
+        plugins: [],
+    }, options);
+};
+window.myObject.prototype = {
+    _call: function (method, ...args) {
+        for (var i in this.d.plugins) {
+            if (method in this.d.plugins[i]) {
+                this.d.plugins[i][method](...args);
+            }
+        }
+    },
+};
+```
+
+
+
+
 Random number between
 ------------
 
@@ -79,6 +102,10 @@ https://github.com/lingtalfi/Lys, waterball sensor
 
 History Log
 ------------------
+
+- 1.1.0 -- 2016-04-16
+
+    - add js plugins section
 
 - 1.0.0 -- 2016-03-31
 
